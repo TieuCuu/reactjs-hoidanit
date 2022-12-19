@@ -16,11 +16,16 @@ class MyComponent extends React.Component {
 
     handleClick(event) {
         console.log('Click me', event.target);
-        console.log("My name is", this.state.name);
+
+        //cập nhật giá trị trong state, sau đó hàm render tự động được gọi lại
+        this.setState({
+            name: 'XiaoJiu',
+            age: Math.floor((Math.random() * 100) + 1)
+        })
     }
 
     handleOnMouseOver(event) {
-        console.log(event.pageX);
+        // console.log(event.pageX);
     }
 
     //JSX
@@ -28,9 +33,9 @@ class MyComponent extends React.Component {
         return (
             <div>
 
-                My name is {this.state.name} and I'm from {this.state.address}
+                My name is {this.state.name} and I'm {this.state.age}
                 <button onMouseOver={this.handleOnMouseOver}>Hover me</button>
-                <button onClick={this.handleClick}>Click me</button>
+                <button onClick={(event) => { this.handleClick(event) }}>Click me</button>
             </div>
         )
     }
