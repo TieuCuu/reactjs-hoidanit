@@ -1,41 +1,35 @@
 //class components
 //function components
+//DRY: don't repeat yourself: nghĩa là những việc lặp lại thì chắc chắn có cách tối ưu
+
 
 import React from "react";
+import DisplayInfor from "./DisplayInfor";
+import UserInfor from "./UserInfor";
 
 class MyComponent extends React.Component {
 
-    //state là 1 biến object, dữ liệu state thay đổi thì trên trình duyệt thay đổi theo
+
     state = {
-        name: 'Phat',
-        address: 'Ha Noi',
-        age: 18
-
-    }
-
-
-    handleClick(event) {
-        console.log('Click me', event.target);
-
-        //cập nhật giá trị trong state, sau đó hàm render tự động được gọi lại
-        this.setState({
-            name: 'XiaoJiu',
-            age: Math.floor((Math.random() * 100) + 1)
-        })
-    }
-
-    handleOnMouseOver(event) {
-        // console.log(event.pageX);
+        listUsers: [
+            { id: 1, name: "Xiao Jiu", age: 18 },
+            { id: 2, name: "Tiểu Cửu", age: 20 },
+            { id: 3, name: "Bảo Nghi", age: 19 }
+        ]
     }
 
     //JSX
     render() {
+        const myInfor = ['ab', 'c', 'd'];
         return (
             <div>
+                <UserInfor />
+                <br /> <br />
 
-                My name is {this.state.name} and I'm {this.state.age}
-                <button onMouseOver={this.handleOnMouseOver}>Hover me</button>
-                <button onClick={(event) => { this.handleClick(event) }}>Click me</button>
+
+                <DisplayInfor listUsers={this.state.listUsers} />
+
+
             </div>
         )
     }
