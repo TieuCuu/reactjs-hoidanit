@@ -5,7 +5,7 @@
 
 import React from "react";
 import DisplayInfor from "./DisplayInfor";
-import UserInfor from "./UserInfor";
+import AddUserInfor from "./AddUserInfor";
 
 class MyComponent extends React.Component {
 
@@ -18,14 +18,21 @@ class MyComponent extends React.Component {
         ]
     }
 
+    handleAddNewUser = (userObj) => {
+        this.setState({
+            listUsers: [userObj, ...this.state.listUsers]
+        })
+    }
+
     //JSX
     render() {
         const myInfor = ['ab', 'c', 'd'];
         return (
             <div>
-                <UserInfor />
+                <AddUserInfor handleAddNewUser={this.handleAddNewUser} />
+                {/* handleAddNewUser k có dấu () nghĩa là tham chiếu đến function, có () là thực thi function */}
+                {/* Truyền tham chiếu cho props là function thì k cần () */}
                 <br /> <br />
-
 
                 <DisplayInfor listUsers={this.state.listUsers} />
 

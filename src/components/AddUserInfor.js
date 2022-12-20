@@ -1,6 +1,6 @@
 import React from "react";
 
-class UserInfor extends React.Component {
+class AddUserInfor extends React.Component {
 
     //state là 1 biến object, dữ liệu state thay đổi thì trên trình duyệt thay đổi theo
     state = {
@@ -24,7 +24,12 @@ class UserInfor extends React.Component {
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state);
+        this.props.handleAddNewUser({
+            id: (Math.floor(Math.random() * 100) + 1) + '-random',
+            name: this.state.name,
+            age: this.state.age
+        });
+        //Thực thi props là 1 function thì phải có ()
     }
 
     render() {
@@ -45,4 +50,4 @@ class UserInfor extends React.Component {
     }
 }
 
-export default UserInfor;
+export default AddUserInfor;
