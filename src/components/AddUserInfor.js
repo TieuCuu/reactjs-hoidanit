@@ -4,9 +4,9 @@ class AddUserInfor extends React.Component {
 
     //state là 1 biến object, dữ liệu state thay đổi thì trên trình duyệt thay đổi theo
     state = {
-        name: 'Phat',
+        name: '',
         address: 'Ha Noi',
-        age: 18
+        age: ''
 
     }
 
