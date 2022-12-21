@@ -28,16 +28,18 @@ class MyComponent extends React.Component {
     render() {
         const myInfor = ['ab', 'c', 'd'];
         return (
-            <div>
-                <AddUserInfor handleAddNewUser={this.handleAddNewUser} />
-                {/* handleAddNewUser k có dấu () nghĩa là tham chiếu đến function, có () là thực thi function */}
-                {/* Truyền tham chiếu cho props là function thì k cần () */}
-                <br /> <br />
+            <>
+                <div className="a">
+                    <AddUserInfor handleAddNewUser={this.handleAddNewUser} />
+                    {/* handleAddNewUser k có dấu () nghĩa là tham chiếu đến function, có () là thực thi function */}
+                    {/* Truyền tham chiếu cho props là function thì k cần () */}
+                    <br /> <br />
 
-                <DisplayInfor listUsers={this.state.listUsers} />
+                    <DisplayInfor listUsers={this.state.listUsers} />
+                </div>
 
-
-            </div>
+                <div className="b"></div>
+            </>
         )
     }
 }
