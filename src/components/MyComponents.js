@@ -24,6 +24,14 @@ class MyComponent extends React.Component {
         })
     }
 
+    handleDeleteUser = (userId) => {
+        let listUsersClone = [...this.state.listUsers];
+        listUsersClone = listUsersClone.filter(item => item.id !== userId);
+        this.setState({
+            listUsers: listUsersClone
+        })
+    }
+
     //JSX
     render() {
         const myInfor = ['ab', 'c', 'd'];
@@ -35,7 +43,7 @@ class MyComponent extends React.Component {
                     {/* Truyền tham chiếu cho props là function thì k cần () */}
                     <br /> <br />
 
-                    <DisplayInfor listUsers={this.state.listUsers} />
+                    <DisplayInfor listUsers={this.state.listUsers} handleDeleteUser={this.handleDeleteUser} />
                 </div>
 
                 <div className="b"></div>
