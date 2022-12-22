@@ -2,80 +2,78 @@ import React from "react";
 import './DisplayInfor.scss';
 import logo from './../logo.svg';
 
-class DisplayInfor extends React.Component {
+//stateless vs stateful
+//stateless: k có state, mà chỉ nhận dữ liệu từ props của cha
 
-    constructor(props) {
-        console.log('this is constructor: 1');
-        super(props);
-        this.state = {
-            isShowListUser: true
-        }
-    }
+// class DisplayInfor extends React.Component {
 
-    componentDidMount() {
-        //chạy sau hàm render
-        //thường thao tác với API ở đây, vì phải đợi các phần tử html tạo ra rồi mới thao tác được
-        console.log('this is component did mount:');
-    }
+//     //component = template (html) + logic js
+//     render() {
+//         console.log('this is render:');
+//         //destructuring array/object
+//         const { listUsers } = this.props;
+//         //props => properties
+//         return (
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        //Dùng khi đạt tới một giá trị gì thì thực hiện hành động gì đó
-        //ví dụ check số lượng user tạo ra có trong giới hạn cho phép k?
+//             <div className="display-infor-container">
 
-        console.log('this is component did update:', this.props, prevProps);
-        if (this.props.listUsers !== prevProps.listUsers) {
-            if (this.props.listUsers.length === 5) {
-                alert('You got 5 users');
-            }
-        }
-    }
+//                 {true &&
+//                     <>
+//                         {listUsers.map((user) => {
+
+//                             return (
+//                                 <div key={user.id} className={+user.age > 20 ? "red" : "green"}>
+//                                     <div>
+//                                         <div>My name's {user.name} </div>
+//                                         <div>My age's {user.age}</div>
+//                                     </div>
+//                                     <div>
+//                                         <button onClick={() => this.props.handleDeleteUser(user.id)}>Delete</button>
+//                                     </div>
+//                                     <hr />
+//                                 </div>
+//                             )
+//                         })}
+//                     </>
+//                 }
+//             </div>
+//         )
+//     }
+// }
 
 
-    handleShowHide = () => {
-        this.setState({
-            isShowListUser: !this.state.isShowListUser
-        })
-    }
+//Function component, react hỗ trợ props, tự động lấy props từ cha truyền xuống, k có khái niệm 'this', k có hàm constructor, render() như class component
+//Khi nào cần chuyển class sang function component => Khi nó k có state
+//Sau v16, có hooks thì function component có thể dùng state
 
+const DisplayInfor = (props) => {
+    //destructuring array/object
+    const { listUsers } = props;
+    return (
 
-    //component = template (html) + logic js
-    render() {
-        console.log('this is render:');
-        //destructuring array/object
-        const { listUsers } = this.props;
-        //props => properties
-        return (
+        <div className="display-infor-container">
 
-            <div className="display-infor-container">
-                {/* <img src={logo} alt="" /> */}
-                <div>
-                    <button onClick={() => { this.handleShowHide() }}>
-                        {this.state.isShowListUser === true ? "Hide list" : "Show list"}
-                    </button>
-                </div>
+            {true &&
+                <>
+                    {listUsers.map((user) => {
 
-                {this.state.isShowListUser &&
-                    <>
-                        {listUsers.map((user) => {
-
-                            return (
-                                <div key={user.id} className={+user.age > 20 ? "red" : "green"}>
-                                    <div>
-                                        <div>My name's {user.name} </div>
-                                        <div>My age's {user.age}</div>
-                                    </div>
-                                    <div>
-                                        <button onClick={() => this.props.handleDeleteUser(user.id)}>Delete</button>
-                                    </div>
-                                    <hr />
+                        return (
+                            <div key={user.id} className={+user.age > 20 ? "red" : "green"}>
+                                <div>
+                                    <div>My name's {user.name} </div>
+                                    <div>My age's {user.age}</div>
                                 </div>
-                            )
-                        })}
-                    </>
-                }
-            </div>
-        )
-    }
+                                <div>
+                                    <button onClick={() => props.handleDeleteUser(user.id)}>Delete</button>
+                                </div>
+                                <hr />
+                            </div>
+                        )
+                    })}
+                </>
+            }
+        </div>
+    )
 }
 
 export default DisplayInfor;
