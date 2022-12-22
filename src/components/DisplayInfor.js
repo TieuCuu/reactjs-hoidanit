@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './DisplayInfor.scss';
 import logo from './../logo.svg';
 
@@ -49,11 +49,29 @@ import logo from './../logo.svg';
 const DisplayInfor = (props) => {
     //destructuring array/object
     const { listUsers } = props;
-    return (
 
+    //HOOKS
+    //phần tử 1 là biến state, phần tử 2 là hàm (tính năng tương tự setState)
+    const [isShowHideListUser, setShowHideListUser] = useState(true);
+
+    // this.state = {
+    //     isShowHideListUser: true
+    // }
+
+    const handleShowHideListUser = () => {
+        // this.setState({
+        //     isShowHideListUser: false
+        // })
+        setShowHideListUser(!isShowHideListUser);
+    }
+
+    return (
         <div className="display-infor-container">
 
-            {true &&
+            <div>
+                <button onClick={() => handleShowHideListUser()}>{isShowHideListUser === true ? "Hide List Users" : "Show List Users"}</button>
+            </div>
+            {isShowHideListUser &&
                 <>
                     {listUsers.map((user) => {
 
