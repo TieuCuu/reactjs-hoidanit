@@ -6,40 +6,33 @@ import MyComponent from './components/MyComponents.js';
 import React from 'react';
 
 //cách viết class component
-class App extends React.Component {
-	render() {
-		return (
+// class App extends React.Component {
+// 	render() {
+// 		return (
 
-			<div className='app-container'>
-				hello world
-				<MyComponent></MyComponent>
-			</div>
+// 			<div className='app-container'>
+// 				hello world
+// 				<MyComponent></MyComponent>
+// 			</div>
 
-		)
-	}
-}
+// 		)
+// 	}
+// }
 
 //cách viết function component
-// const App = () => {
-// 	const count = useSelector(state => state.counter.count);
-// 	const dispatch = useDispatch();
+const App = () => {
+	const count = useSelector(state => state.counter.count);
+	const dispatch = useDispatch();
 
-// 	return (
-// 		<div className="App">
-// 			<header className="App-header">
-// 				<img src={logo} className="App-logo" alt="logo" />
-// 				<p>
-// 					hello world
-// 				</p>
-// 				<div>Count = {count}</div>
-// 				<button onClick={() => dispatch(increaseCounter())}>Increase</button>
-// 				<button onClick={() => dispatch(decreaseCounter())}>Decrease</button>
-// 			</header>
-// 		</div>
+	return (
+		<div className="app-container">
+			hello world
+
+		</div>
 
 
 
-// 	);
-// }
+	);
+}
 
 export default App;
