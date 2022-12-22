@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './DisplayInfor.scss';
 import logo from './../logo.svg';
 
@@ -64,6 +64,21 @@ const DisplayInfor = (props) => {
         // })
         setShowHideListUser(!isShowHideListUser);
     }
+
+    console.log('call me render');
+
+    //mặc định k truyền [] thì tương tự componentDidMount
+    //tham số [], nghĩa là hàm chỉ chạy 1 lần duy nhất, nếu k có thì chạy sau render
+    //tham số [listUsers], nghĩa là theo dõi sự thay đổi biến listUsers để làm một điều gì đó (tương tự componentDidUpdate)
+    //có thể có nhiều hàm useEffect để theo dõi các biến khác nhau...
+    useEffect(() => {
+
+        if (listUsers.length === 0) {
+            alert('List null');
+        }
+        console.log('call me useEffect');
+
+    }, [listUsers]);
 
     return (
         <div className="display-infor-container">
