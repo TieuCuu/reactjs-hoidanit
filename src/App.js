@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
-import MyComponent from './components/MyComponents.js';
+import Header from './components/Header/Header';
 import React from 'react';
 
 //cách viết class component
@@ -21,16 +21,11 @@ import React from 'react';
 
 //cách viết function component
 const App = () => {
-	const count = useSelector(state => state.counter.count);
-	const dispatch = useDispatch();
 
 	return (
 		<div className="app-container">
-			hello world
-
+			<Header />
 		</div>
-
-
 
 	);
 }
