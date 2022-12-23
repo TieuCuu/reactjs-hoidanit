@@ -13,15 +13,18 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
+        children: [
+            {   //vẫn giữ nguyên header
+                path: "/users", //đường link dẫn tới element, phải trùng với Link to bên App.js
+                element: <User />,
+            },
+            {
+                path: "/admin",
+                element: <Admin />,
+            },
+        ],
     },
-    {
-        path: "/users", //đường link dẫn tới element, phải trùng với Link to bên App.js
-        element: <User />,
-    },
-    {
-        path: "/admin",
-        element: <Admin />,
-    },
+
 ]);
 
 
