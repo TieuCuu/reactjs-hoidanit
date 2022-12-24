@@ -8,17 +8,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import User from './components/User/User';
 import Admin from './components/Admin/Admin';
+import HomePage from "./components/Home/HomePage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
         children: [
-            {   //vẫn giữ nguyên header
+
+            {   //mặc định trang home (cha) sẽ render sẵn nếu index = true
+                index: true,
+                element: <HomePage />
+            },
+
+            {   //đây là trang con, vẫn giữ nguyên header
                 path: "/users", //đường link dẫn tới element, phải trùng với Link to bên App.js
                 element: <User />,
             },
-            {
+
+            {   //đây là trang con
                 path: "/admin",
                 element: <Admin />,
             },
